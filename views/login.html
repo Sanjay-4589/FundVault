@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login or Sign Up</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light gray */
+            color: #333; /* Dark gray */
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            text-align: center; /* Center align all content */
+        }
+
+        header, footer {
+            background-color: #87ceeb; /* Light blue */
+            padding: 15px 20px; /* Consistent padding */
+            color: #fff; /* White */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Span full width */
+        }
+
+        h1, h2 {
+            margin: 0; /* Remove default margin */
+        }
+
+        h1 {
+            font-size: 2em; /* Increase heading size */
+        }
+
+        button {
+            background-color: #87ceeb; /* Light blue */
+            color: #fff; /* White */
+            border: none;
+            padding: 10px 20px; /* Consistent padding */
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        button:hover {
+            background-color: #00bfff; /* Darker blue on hover */
+        }
+
+        #login-form,
+        #signup-form {
+            display: none;
+            text-align: center;
+        }
+
+        .form-container {
+            margin: 20px auto; /* Add margin for forms */
+            width: 300px; /* Set form width */
+            border-radius: 5px; /* Rounded corners for forms */
+            padding: 20px; /* Consistent padding for forms */
+            background-color: #fff; /* White background for forms */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 3px; /* Smaller rounded corners for inputs */
+        }
+
+        button[type="submit"] {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function toggleForm(formId) {
+            var loginForm = document.getElementById("login-form");
+            var signupForm = document.getElementById("signup-form");
+
+            if (formId === "login") {
+                loginForm.style.display = "block";
+                signupForm.style.display = "none";
+            } else if (formId === "signup") {
+                loginForm.style.display = "none";
+                signupForm.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>FundVault</h1>
+    </header>
+
+    <h2>Login or Sign Up</h2>
+    <div class="button-container">
+        <button onclick="toggleForm('login')">Login</button>
+        <button onclick="toggleForm('signup')">Sign Up</button>
+    </div>
+
+    <div class="form-container" id="login-form">
+        <h3>Login</h3>
+        <form action="/login" method="POST">
+            <label for="login-UserID">UserID:</label>
+            <input type="text" id="login-UserID" name="UserID" required />
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="password" required />
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="form-container" id="signup-form">
+        <h3>Sign Up</h3>
+        <form action="/signup" method="POST">
+            <label for="signup-username">Username:</label>
+            <input type="text" id="signup-username" name="username" required />
+            <label for="signup-UserID">UserID:</label>
+            <input type="text" id="signup-UserID" name="UserID" required />
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" name="EmailId" required />
+            <label for="signup-phoneno">Phone No.</label>
+            <input type="number" id="signup-phoneno" name="PhoneNo" required />
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" name="password" required />
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>FundVault &copy; 2024. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Form</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* light gray */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #3498db; /* blue */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff; /* white */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333; /* dark gray */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-top: 10px;
+            color: #333; /* dark gray */
+        }
+
+        input[type="number"],
+        input[type="text"],
+        input[type="date"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc; /* light gray */
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+            background-color: #ecf0f1; /* blue-gray */
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            border-color: #3498db; /* blue */
+        }
+
+        input[type="submit"] {
+            width: auto;
+            margin-top: 20px;
+            background-color: #3498db; /* blue */
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9; /* darker blue */
+        }
+
+        /* Reduce input field size */
+        input[type="number"],
+        input[type="text"],
+        input[type="date"] {
+            width: 50%;
+        }
+
+        /* Add placeholders */
+        input[type="number"]::placeholder,
+        input[type="text"]::placeholder,
+        input[type="date"]::placeholder {
+            color: #aaa; /* light gray */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FundVault</h1>
+    </header>
+    <h2>Sign In</h2>
+    <form action="/signUpDetails" method="post">
+        <h2>Enter Account Details</h2>
+        <label for="accNo">Account Number:</label>
+        <input type="number" id="accNo" name="accNo" placeholder="Enter Account Number"><br><br>
+
+        <label for="accType">Account Type:</label>
+        <input type="text" id="accType" name="accType" placeholder="Enter Account Type"><br><br>
+
+        <label for="balance">Balance:</label>
+        <input type="number" id="balance" name="balance" placeholder="Enter Balance"><br><br>
+        
+        <label for="salary">Enter Salary:</label>
+        <input type="number" id="salary" name="salary" placeholder="Enter Salary"><br><br>
+
+        <h2>Enter Loan Details</h2>
+        <label for="loanNo">Loan Number:</label>
+        <input type="number" id="loanNo" name="loanNo" placeholder="Enter Loan Number"><br><br>
+
+        <label for="totalLoan">Total Loan:</label>
+        <input type="number" id="totalLoan" name="totalLoan" placeholder="Enter Total Loan"><br><br>
+
+        <label for="outstanding">Outstanding:</label>
+        <input type="number" id="outstanding" name="outstanding" placeholder="Enter Outstanding"><br><br>
+
+        <label for="emi">EMI:</label>
+        <input type="number" id="emi" name="emi" placeholder="Enter EMI"><br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date"><br><br>
+
+        <h2>Enter Insurance Details</h2>
+        <label for="insID">Insurance ID:</label>
+        <input type="text" id="insID" name="insID" placeholder="Enter Insurance ID"><br><br>
+
+        <label for="coverage">Coverage:</label>
+        <input type="number" id="coverage" name="coverage" placeholder="Enter Coverage"><br><br>
+
+        <label for="insEMI">Insurance EMI:</label>
+        <input type="number" id="insEMI" name="insEMI" placeholder="Enter Insurance EMI"><br><br>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate"><br><br>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate"><br><br>
+
+        <label for="paymentDate">Payment Date:</label>
+        <input type="date" id="paymentDate" name="paymentDate"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <footer>
+        <p>&copy; 2024 FundVault. All rights reserved.</p>
+    </footer>
+</body>
+</html>

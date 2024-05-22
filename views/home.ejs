@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundvault Home</title>
+  <style>
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #87ceeb; /* Light blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #87ceeb; /* Light blue */
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li button {
+    background-color: #87ceeb; /* Light blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+    display: none;
+}
+
+footer {
+    background-color: #87ceeb; /* Light blue */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #87ceeb; /* Light blue */
+    min-width: 160px;
+    z-index: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown-content div {
+    margin-bottom: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropbtn {
+    background-color: #87ceeb; /* Light blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropbtn:hover {
+    background-color: #00bfff; /* Dark blue */
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Fundvault <%= UserDetails[0].UserName %></h1>
+  </header>
+  <nav>
+    <ul>
+      <div class="dropdown">
+        <button class="dropbtn">Options</button>
+        <div class="dropdown-content">
+          <div>
+            <form action="/balanceCheck/<%=UserDetails.UserID%>" method="post">
+            <h3>Accounts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bullet;</h3>
+            <button type="submit">
+              <li>Check Balance</li><br>
+              <li>Edit Balance</li>
+            </button>
+            </form> 
+          </div>
+          <div>
+            <form action="/insuranceCheck.ejs/<%=UserDetails.UserID%>" method="post">
+            <h3>Insurance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bullet;</h3>
+            <button type="submit">
+              <li>Check Coverage</li><br>
+              <li>Pay EMI</li>
+            </button>
+            </form> 
+          </div>
+          <div>
+            <form action="/loanCheck.ejs/<%=UserDetails.UserID%>" method="post">
+            <h3>Loan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bullet;</h3>
+            <button type="submit">
+              <li>Check Coverage</li><br>
+                <li>Pay EMI</li>
+            </button>
+            </form> 
+          </div>
+        </div>
+      </div>
+      <li><button id="userDetailsBtn">User Details</button></li>
+      <li><button id="insuranceDetailsBtn">Insurance Details</button></li>
+      <li><button id="loanDetailsBtn">Loan Details</button></li>
+      <li><button id="logoutBtn">Logout</button></li>
+    </ul>
+  </nav>
+  <section id="userDetails" style="display: block;">
+    <h2>PERSONAL DETAILS</h2>
+    <ul>
+      <li><%=UserDetails[0].UserName%></li>  
+      <li><%=UserDetails[0].EmailID%></li>
+    </ul>  
+    <h2>Account Details</h2>
+    <ul>
+      <li>AccNumber : <%=AccDetails[0][0].AccNo%></li>
+      <li>AccType : <%=AccDetails[0][0].AccType%></li>
+      <li>Balance : <%=AccDetails[0][0].balance %></li>
+    </ul>
+  </section>
+  <section id="insuranceDetails">
+    <h2>Insurance Details:</h2>
+    <ul>
+      <li>InsuranceID : <%=InsDetails[0][0].InsID%></li>
+      <li>Coverage: <%=InsDetails[0][0].Coverage%></li>
+      <li>EMI: <%=InsDetails[0][0].EMI %></li>
+    </ul>
+  </section>
+  <section id="loanDetails">
+    <h2>Loan Details:</h2>
+    <ul>
+      <li>LoanNo: <%=LoanDetails[0][0].LoanNo%></li>
+      <li>TotalLoan: <%=LoanDetails[0][0].TotalLoan%></li>
+      <li>EMI: <%=LoanDetails[0][0].EMI %></li>
+      <li>OutStanding:<%=LoanDetails[0][0].Outstanding%></li>
+    </ul>
+  </section>
+  <footer>
+    <p>&copy; 2024 Fundvault. All rights reserved.</p>
+  </footer>
+  <script>
+    document.getElementById("userDetailsBtn").addEventListener("click", function() {
+      document.getElementById("userDetails").style.display = "block";
+      document.getElementById("insuranceDetails").style.display = "none";
+      document.getElementById("loanDetails").style.display = "none";
+    });
+
+    document.getElementById("insuranceDetailsBtn").addEventListener("click", function() {
+      document.getElementById("userDetails").style.display = "none";
+      document.getElementById("insuranceDetails").style.display = "block";
+      document.getElementById("loanDetails").style.display = "none";
+    });
+
+    document.getElementById("loanDetailsBtn").addEventListener("click", function() {
+      document.getElementById("userDetails").style.display = "none";
+      document.getElementById("insuranceDetails").style.display = "none";
+      document.getElementById("loanDetails").style.display = "block";
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+      window.location.href = "http://localhost:3000/"; // Redirect to logout endpoint
+    });
+  </script>
+</body>
+</html>

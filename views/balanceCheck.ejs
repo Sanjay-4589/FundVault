@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        header, footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            flex-shrink: 0;
+        }
+        
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        h1, h2, p, label {
+            color: #333;
+        }
+        
+        input[type="number"] {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fundvault</h1>
+    </header>
+    <div class="container">
+        <h1>Welcome <%= UserDetails[0].UserName %></h1>
+        <h2>Account Details:</h2>
+        <p>Account Number: <%= AccDetails[0][0].AccNo %></p>
+        <p>Balance: <%= AccDetails[0][0].balance %></p>
+        
+        <h2>Edit Balance</h2>
+        <form action="/editBalance" method="POST">
+            <label for="newBalance">New Balance:</label>
+            <input type="number" id="newBalance" name="newBalance" required>
+            <button type="submit" id="update">Update Balance</button>
+        </form>
+    </div>
+    <footer>
+        <p>Fundvault</p>
+    </footer>
+    <script>
+        document.getElementById("update").onclick = function() {
+            alert("Balance Updated successfully");
+        }
+    </script>
+</body>
+</html>
